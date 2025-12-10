@@ -1,9 +1,22 @@
 
 $req = "$env:TEMP\req.txt"
 
+# =======================================
+# GLOBAL PACKAGES
+
 pip.exe freeze > $req
 
 pip.exe uninstall -r $req -y
+
+# =======================================
+# USER PACKAGES
+
+pip.exe freeze --user > $req
+
+pip.exe uninstall --user -r $req -y
+
+# =======================================
+# CACHE
 
 pip.exe cache purge
 
